@@ -16,13 +16,13 @@ const FORM_SEND_AS_TEXT = false;
 const WHATSAPP_NUMBER = '';
 
 // Mensagem pré-preenchida dos botões de WhatsApp
-const WHATSAPP_MSG = 'Olá! Tenho interesse no Yachthouse e gostaria de receber a tabela e as plantas.';
+const WHATSAPP_MSG = 'Olá! Tenho interesse no Yachthouse by Pininfarina e gostaria de receber a tabela e as plantas.';
 
 // Google Maps > Compartilhar > Incorporar um mapa > copie só a URL do src do iframe
-const MAP_EMBED_URL = '';
+const MAP_EMBED_URL = 'https://www.google.com/maps?q=Av.+Normando+Tedesco,+1400+-+Barra+Sul,+Balne%C3%A1rio+Cambori%C3%BA+-+SC&output=embed';
 
 const FORM_TIMEOUT_MS = 8000;
-const EMPREENDIMENTO = 'Yachthouse';
+const EMPREENDIMENTO = 'Yachthouse by Pininfarina';
 
 /* ========================================================================== */
 
