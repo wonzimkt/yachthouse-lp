@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex, nofollow">
+  <title>Página não encontrada | Yachthouse</title>
+  <style>
+    :root { --ink: #171614; --paper: #F6F3EE; --mute: #5E5A53; --bronze: #7A5C30; }
+    * { box-sizing: border-box; }
+    body { margin: 0; min-height: 100vh; display: grid; place-items: center; padding: 24px 16px; background: var(--paper); color: var(--ink); font-family: Georgia, "Times New Roman", serif; text-align: center; }
+    main { max-width: 34rem; }
+    h1 { font-weight: 500; font-size: clamp(2rem, 6vw, 3rem); line-height: 1.1; margin: 0 0 1rem; }
+    p { font-family: system-ui, -apple-system, "Segoe UI", sans-serif; font-weight: 300; line-height: 1.6; color: var(--mute); margin: 0 0 2rem; }
+    a { display: inline-block; padding: .95rem 1.75rem; background: var(--ink); color: var(--paper); font-family: system-ui, -apple-system, "Segoe UI", sans-serif; font-weight: 500; font-size: .95rem; text-decoration: none; border-radius: 2px; }
+    a:hover { background: #3A332B; }
+    a:focus-visible { outline: 2px solid var(--bronze); outline-offset: 3px; }
+  </style>
+</head>
+<body>
+  <main>
+    <h1>Esta página não existe.</h1>
+    <p>O endereço pode ter mudado. Todas as informações do Yachthouse estão na página principal.</p>
+    <a id="voltar" href="./">Voltar para o Yachthouse</a>
+  </main>
+  <script>
+    // No GitHub Pages (usuario.github.io/repo/) a home é o primeiro segmento do caminho;
+    // em domínio próprio, é a raiz.
+    (function () {
+      var seg = location.pathname.split('/').filter(Boolean)[0];
+      var home = /\.github\.io$/.test(location.hostname) && seg ? '/' + seg + '/' : '/';
+      document.getElementById('voltar').href = home;
+    })();
+  </script>
+</body>
+</html>
