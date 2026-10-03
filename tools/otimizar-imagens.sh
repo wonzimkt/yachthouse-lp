@@ -16,7 +16,7 @@ set -euo pipefail
 
 ORIGEM="${1:-../Assets}"
 DESTINO="assets"
-LARGURAS=(640 1024 1600 2400)
+read -r -a LARGURAS <<< "${LARGURAS:-640 1024 1600 2400}"   # sobrescreva com: LARGURAS="640 1024 1600" ./tools/otimizar-imagens.sh
 QUALIDADE=78
 
 [ -d "$ORIGEM" ] || { echo "Pasta de originais não encontrada: $ORIGEM"; exit 1; }
