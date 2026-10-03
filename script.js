@@ -303,34 +303,43 @@ const EMPREENDIMENTO = 'Yachthouse by Pininfarina';
   // Os formulários fixos (hero e final) também levam o "interesse" no lead
   $$('.lead-form:not([data-titulo])').forEach((f) => { if (f !== formModal) f.dataset.titulo = 'Receber tabela e plantas'; });
 
-  /* ---------- Lightbox da galeria ---------- */
+  /* ---------- Lightbox (galeria e fotos de cada unidade) ---------- */
   const lightbox = $('#lightbox');
-  const itens = $$('.gallery-item');
   const stage = $('.lb-stage', lightbox);
   const legenda = $('.lb-caption', lightbox);
+  let lista = [];
   let atual = 0;
 
   function mostrarItem(i) {
-    atual = (i + itens.length) % itens.length;
-    const item = itens[atual];
-    const alt = item.dataset.alt || '';
-    stage.innerHTML = '';
-    if (item.dataset.full) {
-      const img = new Image();
-      img.src = item.dataset.full;
-      img.alt = alt;
-      img.decoding = 'async';
-      stage.appendChild(img);
-    } else {
-      const ph = $('.ph', item);
-      if (ph) stage.appendChild(ph.cloneNode(true));
-    }
-    legenda.textContent = `${alt}  (${atual + 1} de ${itens.length})`;
+    atual = (i + lista.length) % lista.length;
+    const item = lista[atual];
+    const img = new Image();
+    img.src = item.src;
+    img.alt = item.alt;
+    img.decoding = 'async';
+    stage.replaceChildren(img);
+    legenda.textContent = `${item.alt}  (${atual + 1} de ${lista.length})`;
   }
 
-  itens.forEach((item, i) => {
-    item.addEventListener('click', () => { mostrarItem(i); abrirDialogo(lightbox, item); });
+  function abrirLightbox(itens, i, gatilho) {
+    lista = itens;
+    mostrarItem(i);
+    abrirDialogo(lightbox, gatilho);
+  }
+
+  const galeria = $$('.gallery-item').map((el) => ({ src: el.dataset.full, alt: el.dataset.alt || '' }));
+  $$('.gallery-item').forEach((el, i) => el.addEventListener('click', () => abrirLightbox(galeria, i, el)));
+
+  // Cada card de unidade abre só as fotos daquela unidade (data-fotos + data-legendas)
+  $$('.unit-media').forEach((el) => {
+    const legendas = (el.dataset.legendas || '').split('|');
+    const fotos = el.dataset.fotos.split(',').map((base, k) => ({
+      src: `assets/${base}-1600.webp`,
+      alt: `${el.dataset.unidade}: ${legendas[k] || 'foto ' + (k + 1)}`,
+    }));
+    el.addEventListener('click', () => abrirLightbox(fotos, 0, el));
   });
+
   $('.lb-prev', lightbox).addEventListener('click', () => mostrarItem(atual - 1));
   $('.lb-next', lightbox).addEventListener('click', () => mostrarItem(atual + 1));
   lightbox.addEventListener('keydown', (ev) => {
