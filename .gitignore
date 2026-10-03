@@ -1,0 +1,20 @@
+# Originais pesados e materiais internos nunca vão para o repositório público
+assets-originais/
+*.psd
+*.ai
+*.tif
+*.tiff
+*.heic
+*.pdf
+*.xlsx
+*.xls
+*.docx
+*.zip
+
+# Ambiente / sistema
+.env
+.env.*
+.DS_Store
+node_modules/
+.claude/
+lighthouse/

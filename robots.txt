@@ -1,0 +1,5 @@
+# FASE DE TESTE: bloqueia indexação. Ao publicar de verdade, troque por:
+# User-agent: *
+# Allow: /
+User-agent: *
+Disallow: /
