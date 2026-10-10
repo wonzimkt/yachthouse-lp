@@ -18,3 +18,5 @@ assets-originais/
 node_modules/
 .claude/
 lighthouse/
+.vercel
+.env*
