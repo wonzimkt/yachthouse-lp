@@ -1,0 +1,19 @@
+# Nada de material interno ou ferramentas no deploy da Vercel
+assets-originais/
+tools/
+*.psd
+*.ai
+*.tif
+*.tiff
+*.heic
+*.pdf
+*.xlsx
+*.xls
+*.docx
+*.zip
+.env
+.env.*
+.DS_Store
+node_modules/
+.claude/
+lighthouse/
